@@ -1,0 +1,56 @@
+public class ContaBancaria {
+    // Atributos privados
+    private String titular;
+    private double saldo;
+
+    // Construtor
+    public ContaBancaria(String titular, double saldoInicial) {
+        this.titular = titular;
+        this.saldo = saldoInicial;
+    }
+
+    // Métodos get e set
+    public String getTitular() {
+        return titular;
+    }
+
+    public void setTitular(String titular) {
+        this.titular = titular;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void depositar(double valor) {
+        if (valor > 0) {
+            saldo += valor;
+            System.out.println("Depósito realizado com sucesso!");
+        } else {
+            System.out.println("Valor de depósito inválido.");
+        }
+    }
+
+    public void sacar(double valor) {
+        if (valor <= saldo && valor > 0) {
+            saldo -= valor;
+            System.out.println("Saque realizado com sucesso!");
+        } else {
+            System.out.println("Saldo insuficiente ou valor inválido.");
+        }
+    }
+
+    public void exibirSaldo() {
+        System.out.println("Saldo atual: " + saldo);
+    }
+
+    public static void main(String[] args) {
+        // Criando um objeto da classe ContaBancaria
+        ContaBancaria conta = new ContaBancaria("Maria", 1000.00);
+        
+        // Realizando operações
+        conta.depositar(500);
+        conta.sacar(200);
+        conta.exibirSaldo();
+    }
+}

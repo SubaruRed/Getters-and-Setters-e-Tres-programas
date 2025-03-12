@@ -1,0 +1,66 @@
+public class Produto {
+    // Atributos privados
+    private String nome;
+    private double preco;
+    private int estoque;
+
+    // Construtor
+    public Produto(String nome, double preco, int estoque) {
+        this.nome = nome;
+        setPreco(preco);
+        this.estoque = estoque;
+    }
+
+    // Métodos get e set
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        if (preco >= 0) {
+            this.preco = preco;
+        } else {
+            System.out.println("Preço inválido! Não pode ser negativo.");
+        }
+    }
+
+    public int getEstoque() {
+        return estoque;
+    }
+
+    public void adicionarEstoque(int quantidade) {
+        if (quantidade > 0) {
+            estoque += quantidade;
+            System.out.println("Estoque adicionado com sucesso!");
+        } else {
+            System.out.println("Quantidade inválida.");
+        }
+    }
+
+    public void removerEstoque(int quantidade) {
+        if (quantidade > 0 && estoque >= quantidade) {
+            estoque -= quantidade;
+            System.out.println("Estoque removido com sucesso!");
+        } else {
+            System.out.println("Quantidade insuficiente no estoque.");
+        }
+    }
+
+    public static void main(String[] args) {
+        // Criando um objeto da classe Produto
+        Produto produto = new Produto("Notebook", 2500.00, 10);
+
+        // Realizando operações no estoque
+        produto.adicionarEstoque(5);
+        produto.removerEstoque(3);
+        System.out.println("Estoque atual: " + produto.getEstoque());
+    }
+}
